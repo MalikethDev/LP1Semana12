@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
-namespace MyGenericClass
+namespace MyEnumerable
 {
-    public class Guarda3<T> : IEnumerable
+    public class Guarda3<T> : IEnumerable<T>
     {
         // Three instance variables of type T
         private T[] items;
@@ -19,7 +19,7 @@ namespace MyGenericClass
         public T GetItem(int i)
         {
             if (i < 0 || i >= 3)
-                throw new ArgumentOutOfRangeException("Index must be 0, 1, or 2.");
+                throw new IndexOutOfRangeException();
             return items[i];
         }
 
@@ -27,17 +27,23 @@ namespace MyGenericClass
         public void SetItem(int i, T item)
         {
             if (i < 0 || i >= 3)
-                throw new ArgumentOutOfRangeException("Index must be 0, 1, or 2.");
+                throw new IndexOutOfRangeException();
             items[i] = item;
         }
 
         // Implementation of generic IEnumerator
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < items.Length; i++)
+            foreach (T item in items)
             {
-                yield return items[i];
+                yield return item;
             }
+        }
+
+        // Explicit interface implementation for non-generic IEnumerator
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

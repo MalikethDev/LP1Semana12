@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TheyCameBefore
+namespace MyEnumerable
 {
     public static class BeforeUtils
     {
