@@ -6,6 +6,8 @@ namespace HowManyOfThisType
 {
     public static class Checker
     {
+        /// <summary>
+        /// Returns the number of items in the collection that are of the specified type.
         public static int HowManyOfType<T>(IEnumerable<object> items)
         {
             int count = 0;

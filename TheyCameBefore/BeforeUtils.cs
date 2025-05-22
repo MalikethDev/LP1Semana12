@@ -5,6 +5,8 @@ namespace TheyCameBefore
 {
     public static class BeforeUtils
     {
+        /// <summary>
+        /// Returns an enumerable of items that are less than the specified threshold.
         public static IEnumerable<T> GetTheOnesBefore<T>(IEnumerable<T> items, T threshold)
             where T : struct, IComparable<T>
         {
